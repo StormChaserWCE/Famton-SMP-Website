@@ -2,19 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>FamtonSMP</title>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
   <style>
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+      margin: 0; padding: 0;
     }
     body {
       background: linear-gradient(to bottom, #202020, #303030);
       color: white;
-      font-family: 'Arial', sans-serif;
+      font-family: Arial, sans-serif;
       padding: 20px;
       text-align: center;
     }
@@ -36,7 +35,6 @@
       border: none;
       border-radius: 10px;
       cursor: pointer;
-      text-decoration: none;
       box-shadow: 0 0 15px #00ffcc;
       transition: transform 0.2s, background 0.3s;
     }
@@ -45,15 +43,18 @@
       transform: scale(1.05);
     }
     section {
-      margin: 50px 0;
+      margin: 50px auto;
       max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
+      text-align: left;
     }
     h2 {
       font-size: 2rem;
       margin-bottom: 15px;
       text-shadow: 0 0 5px #00ffff;
+    }
+    p, ul {
+      font-size: 1.1rem;
+      line-height: 1.6;
     }
     ul {
       list-style: none;
@@ -61,12 +62,19 @@
     }
     li {
       padding: 8px 0;
-      font-size: 1.1rem;
+    }
+    a {
+      color: #00ffcc;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
     }
     footer {
       margin-top: 60px;
       font-size: 0.9rem;
       color: #aaa;
+      text-align: center;
     }
   </style>
 </head>
@@ -74,7 +82,7 @@
   <header>
     <h1>FamtonSMP</h1>
     <p>Java Edition 1.21.7</p>
-    <a class="join-button" href="#">Join Now: play.famtonsmp.xyz</a>
+    <button class="join-button" id="copy-ip-btn">Join Now: play.famtonsmp.xyz</button>
   </header>
 
   <section>
@@ -92,17 +100,31 @@
     </ul>
   </section>
 
-<section>
-  <h2>Links</h2>
-  <p>Discord coming soon!</p>
-  <p><a href="rules.html" style="color: #00ffcc;">📜 Read Full Rules</a></p>
-  <p><a href="staff.html" style="color: #00ffcc;">👥 Meet the Staff</a></p>
-</section>
-
-
+  <section>
+    <h2>Links</h2>
+    <p>Discord coming soon!</p>
+    <p><a href="rules.html">📜 Read Full Rules</a></p>
+    <p><a href="staff.html">👥 Meet the Staff</a></p>
+  </section>
 
   <footer>
     <p>&copy; 2025 FamtonSMP. All rights reserved.</p>
   </footer>
+
+  <script>
+    const ip = "play.famtonsmp.xyz";
+    const btn = document.getElementById('copy-ip-btn');
+
+    btn.addEventListener('click', () => {
+      navigator.clipboard.writeText(ip).then(() => {
+        btn.textContent = 'IP Copied! 🎉';
+        setTimeout(() => {
+          btn.textContent = `Join Now: ${ip}`;
+        }, 2000);
+      }).catch(() => {
+        alert('Failed to copy IP. Please copy manually.');
+      });
+    });
+  </script>
 </body>
 </html>
